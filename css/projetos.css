@@ -1,0 +1,102 @@
+/* ESTILOS ESPECÍFICOS — projetos.html */
+
+.hero-projetos {
+  padding: var(--space-11) 0 var(--space-12);
+  background: linear-gradient(
+    180deg,
+    var(--azul-noite) 0%,
+    var(--azul-medio) 100%
+  );
+  color: var(--creme);
+}
+
+.hero-projetos h1 {
+  max-width: 18ch;
+  margin-bottom: var(--space-5);
+  font-size: var(--text-display);
+}
+
+.hero-projetos p {
+  max-width: 60ch;
+  color: var(--texto-claro);
+  font-size: var(--text-md);
+}
+
+.grid-projetos {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-6);
+}
+
+.grid-projetos article {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  border: 1px solid var(--linha);
+  background: var(--branco);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.grid-projetos article:hover,
+.grid-projetos article:focus-within {
+  border-color: var(--mel);
+  box-shadow: 0 8px 20px rgba(27, 42, 64, 0.1);
+  transform: translateY(-3px);
+}
+
+.grid-projetos h3 {
+  margin-bottom: var(--space-3);
+  color: var(--azul-noite);
+  font-size: var(--text-lg);
+}
+
+.grid-projetos article p {
+  flex-grow: 1;
+}
+
+.voluntariado {
+  background: var(--creme);
+}
+
+.doacoes {
+  background: var(--branco);
+}
+
+.doacoes .grid-projetos article {
+  background: var(--creme);
+}
+
+.participar {
+  background: var(--azul-medio);
+  color: var(--creme);
+}
+
+.participar p {
+  max-width: 60ch;
+  margin-bottom: var(--space-6);
+}
+
+/* RESPONSIVIDADE — grid de 12 colunas */
+/* Ordem do maior breakpoint para o menor, para a cascata resolver corretamente telas muito estreitas */
+
+/* Breakpoint 3 — tablets em retrato (até 768px): cards em 2 colunas */
+@media (max-width: 768px) {
+  .grid-projetos article {
+    grid-column: span 6;
+  }
+}
+
+/* Breakpoint 2 — celulares grandes (até 640px): cards em 1 coluna */
+@media (max-width: 640px) {
+  .grid-projetos article {
+    grid-column: span 12;
+  }
+}
+
+/* Breakpoint 5 — desktops panorâmicos (a partir de 1440px): mais respiro entre colunas */
+@media (min-width: 1440px) {
+  .grid-projetos {
+    gap: var(--space-10);
+  }
+}

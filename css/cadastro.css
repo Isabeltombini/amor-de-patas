@@ -1,0 +1,156 @@
+/* ESTILOS ESPECÍFICOS — página de cadastro (view "cadastro" da SPA) */
+
+.hero-cadastro {
+  padding: var(--space-11) 0 var(--space-12);
+  background: linear-gradient(
+    180deg,
+    var(--azul-noite) 0%,
+    var(--azul-medio) 100%
+  );
+  color: var(--creme);
+}
+
+.hero-cadastro h1 {
+  max-width: 18ch;
+  margin-bottom: var(--space-5);
+  font-size: var(--text-display);
+}
+
+.hero-cadastro p {
+  max-width: 60ch;
+  color: var(--texto-claro);
+  font-size: var(--text-md);
+}
+
+.cadastro {
+  padding: var(--space-11) 0;
+}
+
+.cadastro h2 {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-2xl);
+}
+
+.cadastro form {
+  display: grid;
+  gap: var(--space-7);
+  max-width: 760px;
+}
+
+.cadastro fieldset {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  border: 1px solid var(--linha);
+  background: var(--branco);
+}
+
+.cadastro legend {
+  padding: 0 var(--space-3);
+  color: var(--azul-noite);
+  font-size: var(--text-xl);
+}
+
+.cadastro .campo {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.cadastro .linha-campos {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-5);
+}
+
+.cadastro .linha-campos > .campo {
+  grid-column: span 6;
+}
+
+.cadastro label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.cadastro input,
+.cadastro select,
+.cadastro textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-3);
+  border: 1px solid var(--linha);
+  background: var(--branco);
+  color: var(--texto);
+  font-family: inherit;
+  font-size: var(--text-base);
+}
+
+.cadastro input:focus,
+.cadastro select:focus,
+.cadastro textarea:focus {
+  outline: 2px solid var(--azul-medio);
+  outline-offset: 2px;
+}
+
+/* VALIDAÇÃO VISUAL — só reage depois que o usuário interage com o campo */
+.cadastro input:user-valid,
+.cadastro select:user-valid,
+.cadastro textarea:user-valid {
+  border-color: #2E7D32;
+  background-image: linear-gradient(#2E7D32, #2E7D32);
+  background-repeat: no-repeat;
+  background-size: 3px 100%;
+}
+
+.cadastro input:user-invalid,
+.cadastro select:user-invalid,
+.cadastro textarea:user-invalid {
+  border-color: #C0392B;
+  background-image: linear-gradient(#C0392B, #C0392B);
+  background-repeat: no-repeat;
+  background-size: 3px 100%;
+}
+
+.cadastro textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.cadastro .ajuda-campo {
+  color: var(--texto-suave);
+  font-size: var(--text-xs);
+}
+
+.cadastro .legenda-obrigatorio {
+  color: var(--texto-suave);
+  font-size: var(--text-xs);
+}
+
+/* RESPONSIVIDADE — grid de 12 colunas */
+/* Ordem do maior breakpoint para o menor, para a cascata resolver corretamente telas muito estreitas */
+
+/* Breakpoint 3 — tablets em retrato (até 768px) */
+@media (max-width: 768px) {
+  .cadastro fieldset {
+    padding: var(--space-5);
+  }
+}
+
+/* Breakpoint 2 — celulares grandes (até 640px): campos empilhados em 1 coluna */
+@media (max-width: 640px) {
+  .cadastro .linha-campos > .campo {
+    grid-column: span 12;
+  }
+}
+
+/* Breakpoint 1 — celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+  .cadastro fieldset {
+    padding: var(--space-4);
+  }
+}
+
+/* Breakpoint 5 — desktops panorâmicos (a partir de 1440px) */
+@media (min-width: 1440px) {
+  .cadastro form {
+    max-width: 860px;
+  }
+}

@@ -1,0 +1,372 @@
+/* ESTILOS ESPECÍFICOS — index.html */
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* SEÇÃO PRINCIPAL */
+
+.hero {
+  padding: var(--space-11) 0 var(--space-12);
+  background: linear-gradient(
+    180deg,
+    var(--azul-noite) 0%,
+    var(--azul-medio) 100%
+  );
+  color: var(--creme);
+}
+
+.hero h1 {
+  max-width: 16ch;
+  margin-bottom: var(--space-5);
+  font-size: var(--text-display);
+}
+
+.hero p {
+  max-width: 50ch;
+  margin-bottom: var(--space-7);
+  color: var(--texto-claro);
+  font-size: var(--text-md);
+}
+
+/* NOSSA MISSÃO */
+
+.sobre .wrap {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-9);
+  align-items: start;
+}
+
+.sobre .wrap > div {
+  grid-column: span 7;
+}
+
+.sobre .wrap > dl {
+  grid-column: span 5;
+}
+
+.sobre p {
+  max-width: 55ch;
+  margin-bottom: var(--space-4);
+}
+
+.sobre img {
+  margin-top: var(--space-6);
+}
+
+.stat {
+  margin-top: var(--space-6);
+  padding-top: var(--space-2);
+  border-top: 2px solid var(--azul-noite);
+}
+
+.stat dd {
+  margin-left: 0;
+}
+
+.stat strong {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: var(--text-2xl);
+}
+
+.grafico-impacto {
+  margin-top: var(--space-7);
+}
+
+.grafico-impacto h3 {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-lg);
+}
+
+.grafico-caixa {
+  position: relative;
+  height: 220px;
+}
+
+/* ADOÇÃO */
+
+.adocao {
+  background: var(--branco);
+}
+
+.grid-animais {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-7);
+  margin-top: var(--space-9);
+}
+
+.grid-animais article {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  border: 1px solid var(--linha);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.grid-animais article:hover,
+.grid-animais article:focus-within {
+  border-color: var(--mel);
+  box-shadow: 0 8px 20px rgba(27, 42, 64, 0.12);
+  transform: translateY(-3px);
+}
+
+.grid-animais h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 var(--space-2);
+  font-size: var(--text-lg);
+}
+
+.grid-animais article p {
+  flex-grow: 1;
+}
+
+.grid-animais figure {
+  position: relative;
+  padding-top: 75%;
+  overflow: hidden;
+}
+
+.grid-animais figure img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grid-animais figcaption {
+  margin-top: var(--space-2);
+  color: var(--texto-suave);
+  font-size: var(--text-xs);
+}
+
+.favorito-btn {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--azul-noite);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.favorito-btn:hover,
+.favorito-btn:focus-visible {
+  transform: scale(1.12);
+}
+
+.favorito-btn.favorito-ativo {
+  color: #C0392B;
+}
+
+/* COMO AJUDAR */
+
+.como-ajudar p {
+  max-width: 65ch;
+}
+
+.formas-ajuda {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-7);
+}
+
+.formas-ajuda article {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  border-top: 2px solid var(--azul-noite);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.formas-ajuda article:hover,
+.formas-ajuda article:focus-within {
+  box-shadow: 0 8px 20px rgba(27, 42, 64, 0.1);
+  transform: translateY(-3px);
+}
+
+.formas-ajuda h3 {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-lg);
+}
+
+.formas-ajuda article p {
+  flex-grow: 1;
+}
+
+/* CONTATO */
+
+.contato {
+  background: var(--branco);
+}
+
+.contato .wrap {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-9);
+}
+
+.contato .wrap > div {
+  grid-column: span 7;
+}
+
+.contato .wrap > aside {
+  grid-column: span 5;
+}
+
+.contato form {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 480px;
+  margin-top: var(--space-6);
+}
+
+.contato .campo {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.contato label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.contato input,
+.contato select,
+.contato textarea {
+  padding: var(--space-3) var(--space-3);
+  border: 1px solid var(--linha);
+  background: var(--branco);
+  color: var(--texto);
+  font-family: inherit;
+  font-size: var(--text-base);
+}
+
+.contato input:focus,
+.contato select:focus,
+.contato textarea:focus {
+  outline: 2px solid var(--azul-medio);
+  outline-offset: 2px;
+}
+
+/* VALIDAÇÃO VISUAL — só reage depois que o usuário interage com o campo */
+.contato input:user-valid,
+.contato select:user-valid,
+.contato textarea:user-valid {
+  border-color: #2E7D32;
+  background-image: linear-gradient(#2E7D32, #2E7D32);
+  background-repeat: no-repeat;
+  background-size: 3px 100%;
+}
+
+.contato input:user-invalid,
+.contato select:user-invalid,
+.contato textarea:user-invalid {
+  border-color: #C0392B;
+  background-image: linear-gradient(#C0392B, #C0392B);
+  background-repeat: no-repeat;
+  background-size: 3px 100%;
+}
+
+.contato textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.contato .legenda-obrigatorio {
+  color: var(--texto-suave);
+  font-size: var(--text-xs);
+}
+
+/* CONTEÚDO COMPLEMENTAR */
+
+aside {
+  align-self: start;
+  padding: var(--space-6);
+  background: var(--azul-noite);
+  color: var(--creme);
+}
+
+.alerta-titulo strong {
+  font-family: 'Fraunces', serif;
+  color: var(--mel);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+aside p + p {
+  margin-top: var(--space-3);
+}
+
+/* INFORMAÇÕES DE CONTATO */
+
+.contato-info {
+  background: var(--creme);
+}
+
+.contato-info address {
+  font-style: normal;
+}
+
+.contato-info a:hover,
+.contato-info a:focus-visible {
+  color: var(--azul-medio);
+}
+
+/* RESPONSIVIDADE — grid de 12 colunas */
+/* Ordem do maior breakpoint para o menor, para a cascata resolver corretamente telas muito estreitas */
+
+/* Breakpoint 4 — tablets em paisagem / laptops (até 1024px): missão e contato empilham */
+@media (max-width: 1024px) {
+  .sobre .wrap > div,
+  .sobre .wrap > dl,
+  .contato .wrap > div,
+  .contato .wrap > aside {
+    grid-column: span 12;
+  }
+}
+
+/* Breakpoint 3 — tablets em retrato (até 768px): cards em 2 colunas */
+@media (max-width: 768px) {
+  .grid-animais article,
+  .formas-ajuda article {
+    grid-column: span 6;
+  }
+}
+
+/* Breakpoint 2 — celulares grandes (até 640px): cards em 1 coluna */
+@media (max-width: 640px) {
+  .grid-animais article,
+  .formas-ajuda article {
+    grid-column: span 12;
+  }
+}
+
+/* Breakpoint 5 — desktops panorâmicos (a partir de 1440px): mais respiro entre colunas */
+@media (min-width: 1440px) {
+  .grid-animais,
+  .formas-ajuda,
+  .sobre .wrap,
+  .contato .wrap {
+    gap: var(--space-10);
+  }
+}
