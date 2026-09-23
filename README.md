@@ -45,8 +45,31 @@ ong/
 
 ## Como executar
 
+### Localmente (desenvolvimento)
+
 Não é necessário instalar dependências nem rodar um servidor: basta abrir
 `html/index.html` diretamente no navegador.
+
+### Build de produção
+
+Para gerar a versão otimizada (CSS/JS/HTML minificados e imagens em WebP),
+usada no deploy:
+
+```
+npm install
+npm run build
+```
+
+O resultado é escrito em `dist/`, com a mesma estrutura de pastas do
+projeto-fonte. O diretório `dist/` não é versionado (está no
+`.gitignore`) — é reconstruído a cada execução, inclusive automaticamente
+pelo pipeline de CI/CD a cada push em `main` (veja
+`.github/workflows/deploy.yml`).
+
+### Produção
+
+A aplicação publicada está disponível em
+[isabeltombini.github.io/amor-de-patas](https://isabeltombini.github.io/amor-de-patas/).
 
 ## Arquitetura de módulos
 
@@ -69,7 +92,7 @@ funcionalidade nasce em uma branch `feature/` própria, mesclada de volta
 com `merge --no-ff`. Commits seguem o padrão
 [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`,
 `fix:`, `docs:`, `chore:`), e os lançamentos são marcados com tags de
-versionamento semântico (ex.: `v1.0.0`).
+versionamento semântico (ex.: `v1.0.0`, `v2.0.0`).
 
 ## Autoria
 
