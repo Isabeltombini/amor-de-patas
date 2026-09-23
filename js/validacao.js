@@ -21,6 +21,8 @@ window.Validacao = (function () {
 
   function limparFeedback(campo) {
     campo.classList.remove('campo-invalido', 'campo-valido');
+    campo.removeAttribute('aria-invalid');
+    campo.removeAttribute('aria-describedby');
     var msg = campo.parentElement.querySelector('.erro-mensagem');
     if (msg) {
       msg.remove();
@@ -30,17 +32,22 @@ window.Validacao = (function () {
   function marcarErro(campo, mensagem) {
     limparFeedback(campo);
     campo.classList.add('campo-invalido');
+    campo.setAttribute('aria-invalid', 'true');
 
+    var idErro = campo.id + '-erro';
     var msg = document.createElement('small');
     msg.className = 'erro-mensagem';
+    msg.id = idErro;
     msg.setAttribute('role', 'alert');
     msg.textContent = mensagem;
     campo.insertAdjacentElement('afterend', msg);
+    campo.setAttribute('aria-describedby', idErro);
   }
 
   function marcarSucesso(campo) {
     limparFeedback(campo);
     campo.classList.add('campo-valido');
+    campo.setAttribute('aria-invalid', 'false');
   }
 
   function validarCampo(campo) {

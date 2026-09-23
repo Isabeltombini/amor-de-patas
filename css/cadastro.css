@@ -7,7 +7,7 @@
     var(--azul-noite) 0%,
     var(--azul-medio) 100%
   );
-  color: var(--creme);
+  color: var(--texto-sobre-escuro);
 }
 
 .hero-cadastro h1 {
@@ -76,7 +76,7 @@
 .cadastro textarea {
   width: 100%;
   padding: var(--space-3) var(--space-3);
-  border: 1px solid var(--linha);
+  border: 1px solid var(--linha-forte);
   background: var(--branco);
   color: var(--texto);
   font-family: inherit;
