@@ -4,3 +4,12 @@
 # Arquivos temporários do sistema operacional
 Thumbs.db
 .DS_Store
+
+# Dependências de build (reinstaláveis via "npm install")
+node_modules/
+
+# Build de produção (gerada pelo CI/CD a cada deploy — não é código-fonte)
+dist/
+
+# Relatórios locais do Lighthouse (dados de teste, não fazem parte do projeto)
+scripts/lh-*.json

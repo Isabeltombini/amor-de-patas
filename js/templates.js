@@ -17,7 +17,10 @@ window.Templates = (function () {
     return `
           <article>
             <figure>
-              <img src="${animal.imagem}" alt="${animal.alt}" loading="lazy" width="512" height="512">
+              <picture>
+                <source srcset="${animal.imagem.replace(/\.jpg$/, '.webp')}" type="image/webp">
+                <img src="${animal.imagem}" alt="${animal.alt}" loading="lazy" width="512" height="512">
+              </picture>
               <figcaption>${animal.figcaption}</figcaption>
               <button
                 class="favorito-btn${favoritado ? ' favorito-ativo' : ''}"
@@ -42,9 +45,12 @@ window.Templates = (function () {
 
   function renderModalAnimal(animal) {
     return `
-        <dialog id="modal-${animal.id}" class="modal" aria-labelledby="modal-${animal.id}-titulo">
+        <dialog id="modal-${animal.id}" class="modal" aria-modal="true" aria-labelledby="modal-${animal.id}-titulo">
           <div class="modal-conteudo">
-            <img src="${animal.imagem}" alt="${animal.alt}" width="512" height="512">
+            <picture>
+              <source srcset="${animal.imagem.replace(/\.jpg$/, '.webp')}" type="image/webp">
+              <img src="${animal.imagem}" alt="${animal.alt}" width="512" height="512">
+            </picture>
             <h3 id="modal-${animal.id}-titulo">${animal.nome}</h3>
             <dl class="modal-info">
               <div><dt>Idade</dt><dd>${animal.idade}</dd></div>
@@ -100,13 +106,16 @@ window.Templates = (function () {
             cada animal esteja preparado para encontrar
             uma nova família.
           </p>
-          <img
-            src="../imagens/amor-de-patas-institucional.jpg"
-            alt="Voluntária da Amor de Patas acolhendo uma cadela resgatada"
-            loading="lazy"
-            width="768"
-            height="512"
-          >
+          <picture>
+            <source srcset="../imagens/amor-de-patas-institucional.webp" type="image/webp">
+            <img
+              src="../imagens/amor-de-patas-institucional.jpg"
+              alt="Voluntária da Amor de Patas acolhendo uma cadela resgatada"
+              loading="lazy"
+              width="768"
+              height="512"
+            >
+          </picture>
         </div>
         <dl aria-label="Resultados da organização">
           <div class="stat">

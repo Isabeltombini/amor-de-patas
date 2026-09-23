@@ -1,0 +1,19 @@
+{
+  "name": "amor-de-patas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build de producao (minificacao de CSS/JS/HTML) do projeto Amor de Patas",
+  "scripts": {
+    "otimizar-imagens": "node otimizar-imagens.js",
+    "build": "npm run otimizar-imagens && node build.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "html-minifier-terser": "^7.2.0",
+    "lighthouse": "^13.5.0",
+    "sharp": "^0.35.4"
+  },
+  "allowScripts": {
+    "esbuild@0.24.2": true
+  }
+}
