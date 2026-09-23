@@ -45,11 +45,33 @@ window.Menu = (function () {
     });
 
     document.addEventListener('keydown', function (evento) {
-      if (evento.key === 'Escape') {
-        document.querySelectorAll('.dropdown-toggle[aria-expanded="true"]').forEach(function (toggle) {
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.closest('.tem-dropdown').classList.remove('aberto');
-        });
+      if (evento.key !== 'Escape') {
+        return;
+      }
+
+      // fecha qualquer dropdown aberto e devolve o foco ao botao que o
+      // controla, caso o foco estivesse em um item agora oculto (sem isso,
+      // o navegador joga o foco para <body>, desorientando quem navega
+      // so por teclado)
+      document.querySelectorAll('.dropdown-toggle[aria-expanded="true"]').forEach(function (toggle) {
+        var item = toggle.closest('.tem-dropdown');
+        var focoDentro = item.contains(document.activeElement);
+        toggle.setAttribute('aria-expanded', 'false');
+        item.classList.remove('aberto');
+        if (focoDentro) {
+          toggle.focus();
+        }
+      });
+
+      // fecha o menu mobile pela mesma razao, devolvendo o foco ao
+      // botao hamburguer
+      if (menuToggle && menuPrincipal && menuToggle.getAttribute('aria-expanded') === 'true') {
+        var focoNoMenu = menuPrincipal.contains(document.activeElement);
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuPrincipal.classList.remove('aberto');
+        if (focoNoMenu) {
+          menuToggle.focus();
+        }
       }
     });
 
