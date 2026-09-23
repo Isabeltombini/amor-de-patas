@@ -14,7 +14,7 @@ img {
     var(--azul-noite) 0%,
     var(--azul-medio) 100%
   );
-  color: var(--creme);
+  color: var(--texto-sobre-escuro);
 }
 
 .hero h1 {
@@ -254,7 +254,7 @@ img {
 .contato select,
 .contato textarea {
   padding: var(--space-3) var(--space-3);
-  border: 1px solid var(--linha);
+  border: 1px solid var(--linha-forte);
   background: var(--branco);
   color: var(--texto);
   font-family: inherit;
@@ -303,7 +303,7 @@ aside {
   align-self: start;
   padding: var(--space-6);
   background: var(--azul-noite);
-  color: var(--creme);
+  color: var(--texto-sobre-escuro);
 }
 
 .alerta-titulo strong {

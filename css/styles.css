@@ -16,6 +16,12 @@
   --texto-suave: #6B6A5E;
   --texto-claro: #C9D6E3;
   --linha: #E1D8C4;
+  --linha-forte: #9C8D6C; /* WCAG 1.4.11: contraste minimo 3:1 para bordas de componentes interativos */
+
+  /* texto/ícones fixos sobre seções de fundo azul-noite/azul-médio (header,
+     hero, toasts, alertas): não alterna com o tema, pois essas seções já
+     são "escuras" em ambos os modos */
+  --texto-sobre-escuro: #FBF6EC;
 
   /* TIPOGRAFIA — escala modular (8 patamares) */
   --text-xs: 0.8rem;    /* 12.8px — legendas, textos auxiliares */
@@ -42,6 +48,31 @@
   --space-12: 5.5rem;  /* 88px */
 }
 
+/* MODO ESCURO — respeita a preferência do sistema operacional (prefers-color-scheme)
+   quando o usuário nunca escolheu manualmente um tema nesta aplicação */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --creme: #12202F;
+    --branco: #1B2D40;
+    --texto: #EAEEF3;
+    --texto-suave: #A9B7C9;
+    --linha: #2E445E;
+    --linha-forte: #7FA0C4;
+  }
+}
+
+/* MODO ESCURO — escolha explícita do usuário (persistida em localStorage
+   por js/tema.js), sobrepõe tanto o modo claro padrão quanto o
+   prefers-color-scheme do sistema */
+:root[data-tema="escuro"] {
+  --creme: #12202F;
+  --branco: #1B2D40;
+  --texto: #EAEEF3;
+  --texto-suave: #A9B7C9;
+  --linha: #2E445E;
+  --linha-forte: #7FA0C4;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -57,6 +88,7 @@ body {
   color: var(--texto);
   background: var(--creme);
   line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 h1, h2, h3, legend {
@@ -128,7 +160,7 @@ header {
   top: 0;
   z-index: 10;
   background: var(--azul-noite);
-  color: var(--creme);
+  color: var(--texto-sobre-escuro);
 }
 
 header .wrap {
@@ -169,6 +201,36 @@ nav a.ativo {
   font-weight: 600;
 }
 
+/* ALTERNADOR DE TEMA (claro/escuro) */
+
+.tema-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--texto-sobre-escuro);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.tema-toggle:hover,
+.tema-toggle:focus-visible {
+  background: rgba(251, 246, 236, 0.15);
+}
+
+.tema-toggle-icone::before {
+  content: "🌙";
+}
+
+.tema-toggle[aria-pressed="true"] .tema-toggle-icone::before {
+  content: "☀️";
+}
+
 /* MENU HAMBÚRGUER (oculto no desktop) */
 
 .menu-toggle {
@@ -186,7 +248,7 @@ nav a.ativo {
   display: block;
   width: 100%;
   height: 2px;
-  background: var(--creme);
+  background: var(--texto-sobre-escuro);
   border-radius: 2px;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -335,13 +397,13 @@ nav a.ativo {
 .btn-secundario:hover,
 .btn-secundario:focus-visible {
   background: var(--azul-noite);
-  color: var(--creme);
+  color: var(--texto-sobre-escuro);
 }
 
 .btn-secundario:active {
   background: var(--azul-medio);
   border-color: var(--azul-medio);
-  color: var(--creme);
+  color: var(--texto-sobre-escuro);
   transform: translateY(1px) scale(0.98);
 }
 
@@ -492,7 +554,7 @@ dialog.modal p {
   gap: var(--space-3);
   padding: var(--space-4) var(--space-5);
   background: var(--azul-noite);
-  color: var(--creme);
+  color: var(--texto-sobre-escuro);
   border-left: 4px solid #2E7D32;
   border-radius: 4px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -516,7 +578,7 @@ dialog.modal p {
   height: 20px;
   border-radius: 50%;
   background: #2E7D32;
-  color: var(--branco);
+  color: #FFFFFF; /* fixo: texto branco sobre círculo verde, independente do tema */
   font-size: var(--text-xs);
   font-weight: 700;
   flex-shrink: 0;
